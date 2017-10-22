@@ -32,19 +32,21 @@ public class FilterApplesTest {
         return result;
     }
 
+
+
     public static void main(String[] args) {
         List<Apple> appleList = new ArrayList<>();
         Apple a = new Apple("A", COLOR_GREEN, 100.0);
         appleList.add(a);
         Apple b = new Apple("B", COLOR_RED, MIN_HEAVY_WEIGHT+1);
         appleList.add(b);
-        appleList.parallelStream().forEach(apple -> System.out.println(apple.toString()));
+        appleList.stream().forEach(apple -> System.out.println(apple.toString()));
         System.out.println(" ----------------------------------------- ");
         List<Apple> greenAppleList = filterApples(appleList, Apple::isGreenApple);
-        greenAppleList.parallelStream().forEach(apple -> System.out.println(apple.toString()));
+        greenAppleList.stream().forEach(apple -> System.out.println(apple.toString()));
         System.out.println(" ----------------------------------------- ");
         List<Apple> heavyAppleList = filterApples(appleList, Apple::isHeavyApple);
-        heavyAppleList.parallelStream().forEach(apple -> System.out.println(apple.toString()));
+        heavyAppleList.stream().forEach(apple -> System.out.println(apple.toString()));
     }
 
 }
