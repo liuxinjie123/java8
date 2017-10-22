@@ -1,4 +1,4 @@
-package com.java8.test;
+package com.java8.test.chapter01;
 
 import com.java8.dto.User;
 
@@ -14,7 +14,11 @@ public class SimpleStreamSort {
         User u3 = new User("hello", "17602133229");
         List userList = Arrays.asList(u1, u2, u3);
         userList.stream().forEach(u -> System.out.println(u.toString()));
+        System.out.println(" ------------------------------------ ");
         userList.sort(comparing(User::getUsername));
+        userList.stream().forEach(u -> System.out.println(u.toString()));
+        System.out.println(" ------------------------------------ ");
+        userList.sort(comparing(User::getPhone));
         userList.stream().forEach(u -> System.out.println(u.toString()));
     }
 }
