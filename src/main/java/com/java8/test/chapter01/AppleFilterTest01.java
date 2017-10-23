@@ -2,8 +2,8 @@ package com.java8.test.chapter01;
 
 import com.java8.dto.Apple;
 import com.java8.enu.COLOR;
-import com.java8.service.impl.ApplePredicateServiceImpl;
-import com.java8.service.impl.AppleRedColorPredicate;
+import com.java8.service.applePredicate.impl.ApplePredicateServiceImpl;
+import com.java8.service.applePredicate.impl.AppleRedColorPredicate;
 
 import java.util.ArrayList;
 import java.util.List;

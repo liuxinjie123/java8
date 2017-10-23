@@ -1,7 +1,7 @@
-package com.java8.service.impl;
+package com.java8.service.applePredicate.impl;
 
 import com.java8.dto.Apple;
-import com.java8.service.ApplePredicate;
+import com.java8.service.applePredicate.ApplePredicate;
 
 import java.util.ArrayList;
 import java.util.List;
