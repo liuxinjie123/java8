@@ -1,17 +1,16 @@
 package com.java8.test.chapter01;
 
 import com.java8.dto.Apple;
+import com.java8.enu.COLOR;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class FilterApplesTest {
-    private static final String COLOR_GREEN = "green";
-    private static final String COLOR_RED = "red";
     private static final Double MIN_HEAVY_WEIGHT = 150.0;
 
     public static boolean isGreenApple(Apple apple) {
-        return COLOR_GREEN.equals(apple.getColor());
+        return COLOR.GREEN.equals(apple.getColor());
     }
 
     public static boolean isHeavyApple(Apple apple) {
@@ -36,9 +35,9 @@ public class FilterApplesTest {
 
     public static void main(String[] args) {
         List<Apple> appleList = new ArrayList<>();
-        Apple a = new Apple("A", COLOR_GREEN, 100.0);
+        Apple a = new Apple("A", COLOR.GREEN, 100.0);
         appleList.add(a);
-        Apple b = new Apple("B", COLOR_RED, MIN_HEAVY_WEIGHT+1);
+        Apple b = new Apple("B", COLOR.RED, MIN_HEAVY_WEIGHT+1);
         appleList.add(b);
         appleList.stream().forEach(apple -> System.out.println(apple.toString()));
         System.out.println(" ----------------------------------------- ");
