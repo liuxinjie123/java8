@@ -1,7 +1,5 @@
 package com.java8.test.chapter03;
 
-import com.java8.test.chapter01.FilterApplesTest;
-
 import java.util.function.Predicate;
 
 public class LambdaTest08 {
