@@ -12,7 +12,7 @@ public class LambdaTest13 {
         map.put("b", "green");
         map.put("c", "blue");
         List<Apple> appleList = map(map, Apple::new);
-        appleList.parallelStream().forEach(apple -> System.out.println(apple.toString()));
+        appleList.parallelStream().forEach(System.out::println);
     }
 
     public static List<Apple> map(Map<String, String> data, BiFunction<String, String, Apple> function) {

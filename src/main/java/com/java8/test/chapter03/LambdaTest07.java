@@ -26,6 +26,6 @@ public class LambdaTest07 {
         );
         list.parallelStream().forEach(integer -> System.out.println(integer));
         System.out.println(" -------------------------------- ");
-        list.stream().forEach(integer -> System.out.println(integer));
+        list.stream().forEach(System.out::println);
     }
 }

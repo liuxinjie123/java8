@@ -25,12 +25,12 @@ public class LambdaTest05 {
         Predicate<String> nonEmptyStringPredicate = (String s) -> !s.isEmpty();
 
         List<String> list = Arrays.asList("aaa", "", "Hello", "We will get there.", "Welcome to Shanghai.", "Give me some sunshine.");
-        list.parallelStream().forEach(s -> System.out.println(s));
+        list.parallelStream().forEach(System.out::println);
 
         System.out.println(" ------------------------------------ ");
 
         List<String> nonEmptyList = filter(list, nonEmptyStringPredicate);
-        nonEmptyList.parallelStream().forEach(s -> System.out.println(s));
+        nonEmptyList.parallelStream().forEach(System.out::println);
 
     }
 }

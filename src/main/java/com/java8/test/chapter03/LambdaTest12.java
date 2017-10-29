@@ -19,6 +19,6 @@ public class LambdaTest12 {
     public static void main(String[] args) {
         List<Integer> weights = Arrays.asList(1, 11, 55, 6, 20);
         List<Apple> appleList = map(weights, Apple::new);
-        appleList.parallelStream().forEach(apple -> System.out.println(apple.toString()));
+        appleList.parallelStream().forEach(System.out::println);
     }
 }

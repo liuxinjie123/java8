@@ -14,7 +14,7 @@ public class LambdaTest11 {
         String hello = "Hello Lambda!";
         List<String> list = Arrays.asList("a", "b", "A", "B");
         list.sort(String::compareToIgnoreCase);
-        list.stream().forEach(s -> System.out.println(s));
+        list.stream().forEach(System.out::println);
 
         Function<String, Integer> stringToInteger = Integer::parseInt;
         int parseNum = stringToInteger.apply("111");
