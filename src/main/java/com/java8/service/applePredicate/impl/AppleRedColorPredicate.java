@@ -6,19 +6,9 @@ import com.java8.service.applePredicate.ApplePredicate;
 
 import java.util.function.Predicate;
 
-public class AppleRedColorPredicate implements ApplePredicate {
+public class AppleRedColorPredicate<T> implements ApplePredicate {
     @Override
     public boolean test(Apple apple) {
         return COLOR.RED.equals(apple.getColor());
-    }
-
-    @Override
-    public boolean test(Object o) {
-        return false;
-    }
-
-    @Override
-    public Predicate<Apple> negate() {
-        return (t) -> !test(t);
     }
 }

@@ -12,13 +12,4 @@ public class AppleGreenColorPredicate implements ApplePredicate {
         return COLOR.GREEN.equals(apple.getColor());
     }
 
-    @Override
-    public boolean test(Object o) {
-        return false;
-    }
-
-    @Override
-    public Predicate<Apple> negate() {
-        return (t) -> !test(t);
-    }
 }

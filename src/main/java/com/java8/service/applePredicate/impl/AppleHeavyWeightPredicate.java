@@ -11,13 +11,4 @@ public class AppleHeavyWeightPredicate implements ApplePredicate {
         return apple.getWeight() > 150;
     }
 
-    @Override
-    public boolean test(Object o) {
-        return false;
-    }
-
-    @Override
-    public Predicate<Apple> negate() {
-        return (t) -> !test(t);
-    }
 }
