@@ -1,6 +1,6 @@
 package com.java8.test.chapter01;
 
-import com.java8.dto.User;
+import com.java8.model.User;
 
 import java.util.Arrays;
 import java.util.List;

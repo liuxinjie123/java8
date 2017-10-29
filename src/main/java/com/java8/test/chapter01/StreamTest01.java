@@ -1,7 +1,7 @@
 package com.java8.test.chapter01;
 
-import com.java8.dto.Department;
-import com.java8.dto.Employee;
+import com.java8.model.Department;
+import com.java8.model.Employee;
 import com.java8.enu.DEPT;
 
 import java.math.BigDecimal;

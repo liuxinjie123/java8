@@ -1,13 +1,12 @@
-package com.java8.dto;
+package com.java8.model;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import java.io.Serializable;
 
 @Data
 @NoArgsConstructor
+@RequiredArgsConstructor
 @AllArgsConstructor
 public class Apple implements Serializable {
     private static final String COLOR_GREEN = "green";
@@ -15,7 +14,13 @@ public class Apple implements Serializable {
 
     private String name;
     private String color;
-    private Double weight;
+    @NonNull
+    private Integer weight;
+
+    public Apple(String name, String color) {
+        this.name = name;
+        this.color = color;
+    }
 
     public static boolean isGreenApple(Apple apple) {
         return COLOR_GREEN.equals(apple.getColor());

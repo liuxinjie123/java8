@@ -1,4 +1,4 @@
-package com.java8.dto;
+package com.java8.model;
 
 import lombok.*;
 

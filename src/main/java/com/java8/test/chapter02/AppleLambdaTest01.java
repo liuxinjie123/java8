@@ -1,22 +1,21 @@
 package com.java8.test.chapter02;
 
-import com.java8.dto.Apple;
+import com.java8.model.Apple;
 import com.java8.enu.COLOR;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collectors;
 
 import static java.util.stream.Collectors.toList;
 
 public class AppleLambdaTest01 {
     public static void main(String[] args) {
         List<Apple> appleList = new ArrayList<>();
-        Apple a = new Apple("A", COLOR.GREEN, 200.0);
+        Apple a = new Apple("A", COLOR.GREEN, 200);
         appleList.add(a);
-        Apple b = new Apple("B", COLOR.RED, 151.0);
+        Apple b = new Apple("B", COLOR.RED, 151);
         appleList.add(b);
-        Apple c = new Apple("C", COLOR.YELLOW, 100.0);
+        Apple c = new Apple("C", COLOR.YELLOW, 100);
         appleList.add(c);
 
         List<Apple> greenAppleList = appleList.parallelStream().filter(apple -> COLOR.GREEN.equals(apple.getColor())).collect(toList());

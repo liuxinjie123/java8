@@ -1,6 +1,6 @@
 package com.java8.service.appleFormat.impl;
 
-import com.java8.dto.Apple;
+import com.java8.model.Apple;
 import com.java8.service.appleFormat.AppleFormatter;
 
 import java.util.List;
