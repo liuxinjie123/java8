@@ -6,12 +6,10 @@ import com.java8.service.applePredicate.impl.AppleGreenColorPredicate;
 import com.java8.service.applePredicate.impl.AppleHeavyWeightPredicate;
 import com.java8.service.applePredicate.impl.AppleRedColorPredicate;
 import com.java8.service.functiontest.TriFunction;
-import com.java8.test.chapter01.FilterApplesTest;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import java.util.function.Predicate;
 
 import static java.util.Comparator.comparing;
 
