@@ -1,10 +1,7 @@
 package com.java8.test.chapter05;
 
 import java.util.Arrays;
-import java.util.Comparator;
 import java.util.List;
-
-import static java.util.Comparator.comparing;
 
 public class StreamDistinct {
     public static void main(String[] args) {
@@ -14,27 +11,27 @@ public class StreamDistinct {
                 .distinct()
                 .forEach(System.out::println);
 
-        System.out.println(" ---------------------------------- ");
+        System.out.println(" ----------------- 111 ----------------- ");
 
         numList.parallelStream()
                 .filter(i -> i % 2 == 1)
                 .distinct()
                 .forEach(System.out::println);
 
-        System.out.println(" ---------------------------------- ");
+        System.out.println(" ----------------- 222 ----------------- ");
 
         numList.parallelStream()
                 .filter(i -> i % 3 == 0)
                 .forEach(System.out::println);
 
-        System.out.println(" ---------------------------------- ");
+        System.out.println(" ----------------- 333 ----------------- ");
 
         numList.parallelStream()
                 .filter(i -> i % 3 == 0)
                 .limit(3)
                 .forEach(System.out::println);
 
-        System.out.println(" ---------------------------------- ");
+        System.out.println(" ----------------- 444 ----------------- ");
 
         numList.parallelStream()
                 .filter(i -> i % 3 ==0)
@@ -42,12 +39,27 @@ public class StreamDistinct {
                 .limit(3)
                 .forEach(System.out::println);
 
-        System.out.println(" ---------------------------------- ");
+        System.out.println(" ----------------- 555 ----------------- ");
 
         numList.stream()
                 .filter(i -> i % 2 == 1)
                 .distinct()
                 .sorted(Integer::compareTo)
+                .forEach(System.out::println);
+
+        System.out.println(" ----------------- 666 ----------------- ");
+
+        numList.stream()
+                .filter(i -> i % 2 == 1)
+                .distinct()
+                .forEach(System.out::println);
+
+        System.out.println(" ----------------- 777 ---------------- ");
+
+        numList.stream()
+                .filter(i -> i % 2 == 1)
+                .distinct()
+                .skip(2)
                 .forEach(System.out::println);
     }
 }
