@@ -107,6 +107,49 @@ public class StreamReflect {
             System.out.println("sum4=0");
         }
 
+        System.out.println(" ----------------- 121212 ----------------- ");
+
+        int max = numberList1.stream().reduce(Integer::max).get();
+        System.out.println("max=" + max);
+
+        System.out.println(" ----------------- 131313 ----------------- ");
+
+        Optional<Integer> max2 = numberList1.stream().reduce(Integer::max);
+        System.out.println("max2=" + max2.get());
+
+        System.out.println(" ----------------- 141414 ----------------- ");
+
+        int max3 = numberList1.stream().reduce(0, (a, b) -> a < b ? b : a);
+        System.out.println("max3=" + max3);
+
+        System.out.println(" ----------------- 151515 ----------------- ");
+
+        Optional<Integer> max4 = numberList1.stream().reduce((a, b) -> a < b ? b : a);
+        System.out.println("max4=" + max4.get());
+
+        System.out.println(" ----------------- 161616 ----------------- ");
+
+        int count = numberList1.parallelStream()
+                .map(i -> 1)
+                .reduce(0, Integer::sum);
+        System.out.println("count=" + count);
+
+        System.out.println(" ----------------- 171717 ----------------- ");
+
+        int count2 = numberList1.parallelStream()
+                .map(i -> 1)
+                .reduce(Integer::sum)
+                .get();
+        System.out.println("count2=" + count2);
+
+        System.out.println(" ----------------- 181818 ----------------- ");
+
+        long count3 = numberList1.parallelStream().count();
+        System.out.println("count3=" + count3);
+
+        System.out.println(" ----------------- 191919 ----------------- ");
+
+
 
     }
 }
