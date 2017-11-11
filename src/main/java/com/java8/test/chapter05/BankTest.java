@@ -125,6 +125,6 @@ public class BankTest {
                 .map(Transaction::getTrader)
                 .mapToInt(Trader::getAge)
                 .min();
-        System.out.println(" minAge=" + minAge.getAsInt());
+        System.out.println(" minAge=" + minAge.orElse(0));
     }
 }
