@@ -12,4 +12,5 @@ import java.io.Serializable;
 public class Trader implements Serializable {
     private String name;
     private String city;
+    private int age;
 }

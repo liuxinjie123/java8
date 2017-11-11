@@ -4,10 +4,7 @@ import com.java8.model.bank.Trader;
 import com.java8.model.bank.Transaction;
 
 import java.math.BigDecimal;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-import java.util.Optional;
+import java.util.*;
 
 import static java.util.Comparator.comparing;
 
@@ -16,10 +13,10 @@ public class BankTest {
     public static final String CITY_Milan = "Milan";
 
     public static void main(String[] args) {
-        Trader raoul = new Trader("Raoul", CITY_CamBridge);
-        Trader mario = new Trader("Mario", CITY_Milan);
-        Trader alan = new Trader("Alan", CITY_CamBridge);
-        Trader brain = new Trader("Brian", CITY_CamBridge);
+        Trader raoul = new Trader("Raoul", CITY_CamBridge, 20);
+        Trader mario = new Trader("Mario", CITY_Milan, 22);
+        Trader alan = new Trader("Alan", CITY_CamBridge, 30);
+        Trader brain = new Trader("Brian", CITY_CamBridge, 28);
         //test01
         List<Transaction> transactionList = Arrays.asList(
                 new Transaction(brain, 2011, BigDecimal.valueOf(3000)),
@@ -108,5 +105,26 @@ public class BankTest {
                 .min(comparing(Transaction::getAmount));
         System.out.println(" minAmount2=" + minTransaction.get().getAmount());
 
+        System.out.println(" ---------------- 009 --------------- ");
+        int sumAge = transactionList.parallelStream()
+                .map(Transaction::getTrader)
+                .mapToInt(Trader::getAge)
+                .sum();
+        System.out.println(" sumAge=" + sumAge);
+        OptionalDouble aveAge = transactionList.parallelStream()
+                .map(Transaction::getTrader)
+                .mapToInt(Trader::getAge)
+                .average();
+        System.out.println(" aveAge=" + aveAge.getAsDouble());
+        OptionalInt maxAge = transactionList.parallelStream()
+                .map(Transaction::getTrader)
+                .mapToInt(Trader::getAge)
+                .max();
+        System.out.println(" maxAge=" + maxAge.getAsInt());
+        OptionalInt minAge = transactionList.parallelStream()
+                .map(Transaction::getTrader)
+                .mapToInt(Trader::getAge)
+                .min();
+        System.out.println(" minAge=" + minAge.getAsInt());
     }
 }
