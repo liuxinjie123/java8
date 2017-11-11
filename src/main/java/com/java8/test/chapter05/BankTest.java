@@ -60,7 +60,7 @@ public class BankTest {
                 .sorted()
                 .forEach(System.out::println);
 
-        System.out.println(" ---------------- 003-01 --------------- ");
+        System.out.println(" ---------------- 004-01 --------------- ");
         String traderNameStr = transactionList.stream()
                 .map(Transaction::getTrader)
                 .map(Trader::getName)
@@ -75,6 +75,11 @@ public class BankTest {
                 .filter(t -> t.getCity().equals(CITY_Milan))
                 .distinct()
                 .forEach(System.out::println);
+        System.out.println(" ---------------- 005-01 --------------- ");
+        boolean isExistWorkAtMilan = transactionList.stream()
+                .map(Transaction::getTrader)
+                .anyMatch(t -> t.getCity().equals(CITY_Milan));
+        System.out.println(" isExistWorkAtMilan=" + isExistWorkAtMilan);
 
         System.out.println(" ---------------- 006 --------------- ");
         Optional<BigDecimal> sumAmount = transactionList.parallelStream()
@@ -88,12 +93,20 @@ public class BankTest {
                 .map(Transaction::getAmount)
                 .reduce(BigDecimal::max);
         System.out.println(" maxAmount=" + maxAmount.get());
+        System.out.println(" ---------------- 007-01 --------------- ");
+        Optional<Transaction> maxTransaction = transactionList.parallelStream()
+                .max(comparing(Transaction::getAmount));
+        System.out.println(" maxAmount2=" + maxTransaction.get().getAmount());
 
-        System.out.println(" ---------------- 007 --------------- ");
+        System.out.println(" ---------------- 008 --------------- ");
         Optional<BigDecimal> minAmount = transactionList.parallelStream()
                 .map(Transaction::getAmount)
                 .reduce(BigDecimal::min);
         System.out.println(" minAmount=" + minAmount.get());
+        System.out.println(" ---------------- 008-01 --------------- ");
+        Optional<Transaction> minTransaction = transactionList.parallelStream()
+                .min(comparing(Transaction::getAmount));
+        System.out.println(" minAmount2=" + minTransaction.get().getAmount());
 
     }
 }
