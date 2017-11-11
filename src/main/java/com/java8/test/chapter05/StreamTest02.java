@@ -8,5 +8,7 @@ public class StreamTest02 {
                 .filter(i -> i % 2 == 0);
         System.out.println(" count=" + evenNumbers.count());
 
+
+
     }
 }
