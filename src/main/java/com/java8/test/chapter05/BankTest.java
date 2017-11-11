@@ -60,6 +60,15 @@ public class BankTest {
                 .sorted()
                 .forEach(System.out::println);
 
+        System.out.println(" ---------------- 003-01 --------------- ");
+        String traderNameStr = transactionList.stream()
+                .map(Transaction::getTrader)
+                .map(Trader::getName)
+                .distinct()
+                .sorted()
+                .reduce("", (a, b) -> a + " " + b);
+        System.out.println(" traderNameStr=" + traderNameStr);
+
         System.out.println(" ---------------- 005 --------------- ");
         transactionList.parallelStream()
                 .map(Transaction::getTrader)
