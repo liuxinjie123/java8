@@ -14,4 +14,5 @@ public class Dish implements Serializable {
     private boolean vegetarian;
     private int calories;
     private Type type;
+
 }
