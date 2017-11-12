@@ -21,17 +21,7 @@ public class StreamTest03 {
 
         System.out.println(" ----------------- 003 ---------------- ");
 
-        long uniqueWords = 0;
-        try (
-            Stream<String> lines = Files.lines(Paths.get("files/chapter05/data.txt"), Charset.defaultCharset())
-        ) {
-            uniqueWords = lines.flatMap(line -> Arrays.stream(line.split(" ")))
-                    .distinct()
-                    .count();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        System.out.println(" uniqueWords=" + uniqueWords);
+
 
     }
 }
