@@ -75,5 +75,33 @@ public class StreamCollector {
         System.out.println(" \n------------------ 111111 ---------------- ");
         String shortMenu3 = menu.stream().map(Dish::getName).collect(joining(",", "[", "]"));
         System.out.println(" shortMenu3=" + shortMenu3);
+
+        System.out.println(" \n------------------ 121212 ---------------- ");
+        int totalCalories3 = menu.stream()
+                .collect(reducing(0, Dish::getCalories, Integer::sum));
+        System.out.println(" totalCalories3=" + totalCalories3);
+
+        System.out.println(" \n------------------ 131313 ---------------- ");
+        int maxCalories = menu.stream()
+                .collect(reducing(0, Dish::getCalories, Integer::max));
+        System.out.println(" maxCalories=" + maxCalories);
+
+        System.out.println(" \n------------------ 141414 ---------------- ");
+        int minCalories = menu.stream()
+                .collect(reducing(1000, Dish::getCalories, Integer::min));
+        System.out.println(" minCalories=" + minCalories);
+
+        System.out.println(" \n------------------ 151515 ---------------- ");
+        int totalCalories4 = menu.stream().map(Dish::getCalories).reduce(Integer::sum).get();
+        System.out.println(" totalCalories4=" + totalCalories4);
+
+        System.out.println(" \n------------------ 161616 ---------------- ");
+        String shortMenu4 = menu.stream().map(Dish::getName).collect(reducing((s1, s2) -> s1 + ", " + s2)).get();
+        System.out.println(" shortMenu4=" + shortMenu4);
+
+        System.out.println(" \n------------------ 161616 ---------------- ");
+        String shortMenu5 = menu.stream().collect(reducing("", Dish::getName, (s1, s2) -> s1 + ", " + s2));
+        System.out.println(" shortMenu5=" + shortMenu5);
+
     }
 }
