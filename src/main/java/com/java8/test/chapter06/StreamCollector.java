@@ -214,5 +214,13 @@ public class StreamCollector {
                 .collect(partitioningBy(Dish::isVegetarian, counting()));
         System.out.println(partitionCount);
 
+
+
+
+
+
+
+
+
     }
 }
