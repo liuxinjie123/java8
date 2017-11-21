@@ -1,5 +1,6 @@
 package com.java8.model;
 
+import com.java8.enu.DishType;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -13,6 +14,6 @@ public class Dish implements Serializable {
     private String name;
     private boolean vegetarian;
     private int calories;
-    private Type type;
+    private DishType dishType;
 
 }

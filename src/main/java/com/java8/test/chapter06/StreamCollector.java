@@ -1,7 +1,9 @@
 package com.java8.test.chapter06;
 
+import com.java8.enu.CaloricLevel;
+import com.java8.enu.DEPT;
 import com.java8.model.Dish;
-import com.java8.model.Type;
+import com.java8.enu.DishType;
 
 import java.util.*;
 
@@ -10,15 +12,15 @@ import static java.util.stream.Collectors.*;
 public class StreamCollector {
     public static void main(String[] args) {
         List<Dish> menu = Arrays.asList(
-                new Dish("port", false, 800, Type.MEAT),
-                new Dish("beef", false, 700, Type.MEAT),
-                new Dish("chicken", false, 400, Type.MEAT),
-                new Dish("french fries", true, 530, Type.OTHER),
-                new Dish("rice", true, 350, Type.OTHER),
-                new Dish("season fruit", true, 120, Type.OTHER),
-                new Dish("pizza", true, 550, Type.OTHER),
-                new Dish("prawns", false, 300, Type.FISH),
-                new Dish("salmon", false, 450, Type.FISH)
+                new Dish("port", false, 800, DishType.MEAT),
+                new Dish("beef", false, 700, DishType.MEAT),
+                new Dish("chicken", false, 400, DishType.MEAT),
+                new Dish("french fries", true, 530, DishType.OTHER),
+                new Dish("rice", true, 350, DishType.OTHER),
+                new Dish("season fruit", true, 120, DishType.OTHER),
+                new Dish("pizza", true, 550, DishType.OTHER),
+                new Dish("prawns", false, 300, DishType.FISH),
+                new Dish("salmon", false, 450, DishType.FISH)
         );
 
         System.out.println(" \n------------------ 111 ---------------- ");
@@ -99,9 +101,41 @@ public class StreamCollector {
         String shortMenu4 = menu.stream().map(Dish::getName).collect(reducing((s1, s2) -> s1 + ", " + s2)).get();
         System.out.println(" shortMenu4=" + shortMenu4);
 
-        System.out.println(" \n------------------ 161616 ---------------- ");
+        System.out.println(" \n------------------ 171717 ---------------- ");
         String shortMenu5 = menu.stream().collect(reducing("", Dish::getName, (s1, s2) -> s1 + ", " + s2));
         System.out.println(" shortMenu5=" + shortMenu5);
+
+        System.out.println(" \n------------------ 181818 ---------------- ");
+        Map<CaloricLevel, List<Dish>> dishesByCaloricLevel = menu.stream().collect(
+                groupingBy(dish -> {
+                    if (dish.getCalories() <= 400) return CaloricLevel.DIET;
+                    else if (dish.getCalories() > 700) return CaloricLevel.FAT;
+                    else return CaloricLevel.NORMAL;
+                        }
+                )
+        );
+        dishesByCaloricLevel.keySet().stream().forEach(System.out::println);
+        dishesByCaloricLevel.values().stream().forEach(System.out::println);
+
+        System.out.println(" \n------------------ 191919 ---------------- ");
+        Map<DishType, Map<CaloricLevel, List<Dish>>> dishesByTypeCaloricLevel = menu.stream()
+                .collect(
+                        groupingBy(Dish::getDishType,
+                                groupingBy(dish -> {
+                                    if (dish.getCalories() <= 400) return CaloricLevel.DIET;
+                                    else if (dish.getCalories() > 700) return CaloricLevel.FAT;
+                                    else return CaloricLevel.NORMAL;
+                                        }
+                                ))
+                );
+        dishesByTypeCaloricLevel.keySet().stream().forEach(System.out::println);
+        dishesByTypeCaloricLevel.values().stream().forEach(System.out::println);
+
+        System.out.println(" \n------------------ 202020 ---------------- ");
+        Map<DishType, Long> typesCount = menu.stream().collect(
+                groupingBy(Dish::getDishType, counting())
+        );
+        System.out.println(typesCount);
 
     }
 }
