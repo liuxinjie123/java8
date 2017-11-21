@@ -149,5 +149,34 @@ public class StreamCollector {
                         collectingAndThen(maxBy(comparingInt(Dish::getCalories)), Optional::get)));
         System.out.println(mostCaloricByType2);
 
+        System.out.println(" \n------------------ 232323 ---------------- ");
+        Map<DishType, Integer> totalCaloricByType = menu.stream()
+                .collect(groupingBy(Dish::getDishType, summingInt(Dish::getCalories)));
+        System.out.println(totalCaloricByType);
+
+        System.out.println(" \n------------------ 242424 ---------------- ");
+        Map<DishType, Set<CaloricLevel>> caloricLevelByType = menu.stream()
+                .collect(groupingBy(Dish::getDishType, mapping(
+                        dish -> {
+                            if (dish.getCalories() < 400) return CaloricLevel.DIET;
+                            else if (dish.getCalories() > 700) return CaloricLevel.FAT;
+                            else return CaloricLevel.NORMAL;
+                        },
+                        toSet()
+                )));
+        System.out.println(caloricLevelByType);
+
+        System.out.println(" \n------------------ 252525 ---------------- ");
+        Map<DishType, Set<CaloricLevel>> caloricLevelByType2 = menu.stream()
+                .collect(groupingBy(Dish::getDishType,
+                        mapping( dish -> {
+                                    if (dish.getCalories() < 400) return CaloricLevel.DIET;
+                                    else if (dish.getCalories() > 700) return CaloricLevel.FAT;
+                                    else return CaloricLevel.NORMAL;
+                                },
+                                toCollection(HashSet::new)
+                        )));
+        System.out.println(caloricLevelByType2);
+
     }
 }
