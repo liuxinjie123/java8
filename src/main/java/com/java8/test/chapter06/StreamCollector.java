@@ -7,6 +7,7 @@ import com.java8.enu.DishType;
 
 import java.util.*;
 
+import static java.util.Comparator.comparingInt;
 import static java.util.stream.Collectors.*;
 
 public class StreamCollector {
@@ -32,7 +33,7 @@ public class StreamCollector {
         System.out.println(" howManyDishes2=" + howManyDishes2);
 
         System.out.println(" \n------------------ 333 ---------------- ");
-        Comparator<Dish> dishComparator = Comparator.comparingInt(Dish::getCalories);
+        Comparator<Dish> dishComparator = comparingInt(Dish::getCalories);
 
         Optional<Dish> mostCalorieDish = menu.stream()
                 .collect(maxBy(dishComparator));
@@ -136,6 +137,17 @@ public class StreamCollector {
                 groupingBy(Dish::getDishType, counting())
         );
         System.out.println(typesCount);
+
+        System.out.println(" \n------------------ 212121 ---------------- ");
+        Map<DishType, Optional<Dish>> mostCaloricByType = menu.stream()
+                .collect(groupingBy(Dish::getDishType, maxBy(comparingInt(Dish::getCalories))));
+        System.out.println(mostCaloricByType);
+
+        System.out.println(" \n------------------ 222222 ---------------- ");
+        Map<DishType, Dish> mostCaloricByType2 = menu.stream()
+                .collect(groupingBy(Dish::getDishType,
+                        collectingAndThen(maxBy(comparingInt(Dish::getCalories)), Optional::get)));
+        System.out.println(mostCaloricByType2);
 
     }
 }
