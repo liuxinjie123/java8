@@ -178,5 +178,41 @@ public class StreamCollector {
                         )));
         System.out.println(caloricLevelByType2);
 
+        System.out.println(" \n------------------ 262626 ---------------- ");
+        Map<Boolean, List<Dish>> dishesByPartitioned = menu.stream()
+                .collect(partitioningBy(Dish::isVegetarian));
+        System.out.println(dishesByPartitioned);
+
+        System.out.println(" \n------------------ 272727 ---------------- ");
+        List<Dish> vegetarianDishList = menu.parallelStream()
+                .filter(Dish::isVegetarian).collect(toList());
+        vegetarianDishList.forEach(System.out::println);
+
+        System.out.println(" \n------------------ 282828 ---------------- ");
+        Map<Boolean, Map<DishType, List<Dish>>> vegetarianDishesByType = menu.parallelStream()
+                .collect(
+                        partitioningBy(Dish::isVegetarian, groupingBy(Dish::getDishType))
+                );
+        System.out.println(vegetarianDishesByType);
+
+        System.out.println(" \n------------------ 292929 ---------------- ");
+        Map<Boolean, Dish> mostCaloricPartitionedByVegetarian = menu.parallelStream()
+                .collect(
+                        partitioningBy(Dish::isVegetarian,
+                                collectingAndThen(
+                                        maxBy(comparingInt(Dish::getCalories)),
+                                        Optional::get)));
+        System.out.println(mostCaloricPartitionedByVegetarian);
+
+        System.out.println(" \n------------------ 303030 ---------------- ");
+        System.out.println(menu.stream()
+                .collect(partitioningBy(Dish::isVegetarian,
+                        partitioningBy(d -> d.getCalories() > 500))));
+
+        System.out.println(" \n------------------ 313131 ---------------- ");
+        Map<Boolean, Long> partitionCount = menu.parallelStream()
+                .collect(partitioningBy(Dish::isVegetarian, counting()));
+        System.out.println(partitionCount);
+
     }
 }
