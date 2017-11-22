@@ -249,7 +249,24 @@ public class StreamCollector {
         System.out.println(partitionPrimeStr);
 
         System.out.println(" \n------------------ 393939 ---------------- ");
+        List<Integer> intList = IntStream.rangeClosed(1, 100).boxed().collect(new ToListCollector<>());
+        intList.forEach(i -> System.out.print(i + ", "));
 
+        System.out.println(" \n------------------ 404040 ---------------- ");
+        List<Dish> dishes2 = menu.stream().collect(
+                ArrayList::new,
+                List::add,
+                List::addAll
+        );
+        dishes2.forEach(System.out::println);
+
+        System.out.println(" \n------------------ 414141 ---------------- ");
+        List<Dish> dishes3 = menu.stream().collect(toList());
+        dishes3.forEach(System.out::println);
+
+        System.out.println(" \n------------------ 424242 ---------------- ");
+        List<Dish> dishes5 = menu.stream().collect(new ToListCollector<>());
+        dishes5.forEach(System.out::println);
 
     }
 
