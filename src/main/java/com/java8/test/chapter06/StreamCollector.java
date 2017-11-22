@@ -4,8 +4,11 @@ import com.java8.enu.CaloricLevel;
 import com.java8.enu.DEPT;
 import com.java8.model.Dish;
 import com.java8.enu.DishType;
+import com.java8.service.collectors.PrimeNumbersCollector;
+import com.java8.test.chapter01.FilterApplesTest;
 
 import java.util.*;
+import java.util.function.Predicate;
 import java.util.stream.IntStream;
 
 import static java.util.Comparator.comparingInt;
@@ -268,6 +271,8 @@ public class StreamCollector {
         List<Dish> dishes5 = menu.stream().collect(new ToListCollector<>());
         dishes5.forEach(System.out::println);
 
+        System.out.println(" \n------------------ 434343 ---------------- ");
+        System.out.println(partitionPrimesWithCustomerCollector(100));
     }
 
     public static boolean isPrime(int candidate) {
@@ -285,5 +290,32 @@ public class StreamCollector {
         return IntStream.rangeClosed(2, n)
                 .boxed()
                 .collect(partitioningBy(candidate -> isPrime2(candidate)));
+    }
+
+    public static boolean isPrime3(List<Integer> primes, int candidate) {
+        return primes.stream().noneMatch(i -> candidate % i == 0);
+    }
+
+    public static <A> List<A> takeWhile(List<A> list, Predicate<A> p) {
+        int i = 0;
+        for (A item : list) {
+            if (!p.test(item)) {
+                return list.subList(0, i);
+            }
+            i++;
+        }
+        return list;
+    }
+
+    public static boolean isPrime(List<Integer> primes, int candidate) {
+        int candidateRoot = (int) Math.sqrt(candidate);
+        return takeWhile(primes, i -> i <= candidateRoot)
+                .stream()
+                .noneMatch(p -> candidate % p == 0);
+    }
+
+    public static Map<Boolean, List<Integer>> partitionPrimesWithCustomerCollector(int n) {
+        return IntStream.rangeClosed(2, n).boxed()
+                .collect(new PrimeNumbersCollector());
     }
 }
