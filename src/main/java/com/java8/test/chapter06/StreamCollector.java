@@ -6,6 +6,7 @@ import com.java8.model.Dish;
 import com.java8.enu.DishType;
 
 import java.util.*;
+import java.util.stream.IntStream;
 
 import static java.util.Comparator.comparingInt;
 import static java.util.stream.Collectors.*;
@@ -214,13 +215,38 @@ public class StreamCollector {
                 .collect(partitioningBy(Dish::isVegetarian, counting()));
         System.out.println(partitionCount);
 
+        System.out.println(" \n------------------ 323232 ---------------- ");
+        for (int i = 1; i < 100; i++) {
+            if (isPrime(i)) {
+                System.out.print(i + ", ");
+            }
+        }
+
+        System.out.println(" \n------------------ 333333 ---------------- ");
+        IntStream.range(1, 100).forEach(i -> {
+            if (isPrime(i)) {
+                System.out.print(i + ", ");
+            }
+        });
+
+        System.out.println(" \n------------------ 343434 ---------------- ");
+        IntStream.range(1, 100).filter(i -> isPrime(i)).forEach(i -> System.out.print(i + ", "));
+
+        System.out.println(" \n------------------ 353535 ---------------- ");
+        String primeStr = IntStream.range(1, 100).filter(i -> isPrime(i)).mapToObj(i -> String.valueOf(i) + ", ").collect(joining());
+        System.out.println(primeStr);
+
+        System.out.println(" \n------------------ 363636 ---------------- ");
+        String primeStr2 = IntStream.range(1, 100).filter(i -> isPrime(i)).mapToObj(i -> String.valueOf(i)).collect(joining(", ", "[", "]"));
+        System.out.println(primeStr2);
 
 
 
 
+    }
 
-
-
-
+    public static boolean isPrime(int candidate) {
+        return IntStream.range(2, candidate)
+                .noneMatch(i -> candidate % i == 0);
     }
 }
