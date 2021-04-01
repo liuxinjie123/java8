@@ -1,6 +1,6 @@
 package com.java8.test.chapter01;
 
-import com.java8.Utils.MyMathUtils;
+import com.java8.utils.MyMathUtils;
 
 public class Test001 {
     public static void main(String[] args) {
