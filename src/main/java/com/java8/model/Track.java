@@ -5,34 +5,18 @@ import lombok.NoArgsConstructor;
 import lombok.experimental.Accessors;
 
 import java.io.Serializable;
-import java.math.BigDecimal;
 
 @Accessors(chain = true)
 @Data
 @NoArgsConstructor
-public class Artist implements Serializable {
+public class Track implements Serializable {
     /**
-     * id
-     */
-    private Long id;
-
-    /**
-     * name
+     * nane
      */
     private String name;
 
     /**
-     * city
+     * time
      */
-    private String city;
-
-    /**
-     * salary
-     */
-    private Long salary;
-
+    private Long time;
 }
-
-
-
-

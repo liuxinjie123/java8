@@ -5,8 +5,11 @@ import com.java8.service.ArtistService;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import javax.annotation.Resource;
+import java.math.BigDecimal;
 import java.util.ArrayList;
+import java.util.IntSummaryStatistics;
 import java.util.List;
+import java.util.LongSummaryStatistics;
 import java.util.function.BinaryOperator;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
@@ -73,17 +76,18 @@ public class ArtistTest {
     private static List<Artist> getArticleList() {
         List<Artist> artistList = new ArrayList<>();
         Artist artist = new Artist();
-        artist.setId(1L).setName("jack").setCity(SHANG_HAI);
+        artist.setId(1L).setName("jack").setCity(SHANG_HAI).setSalary(1000000L);
         artistList.add(artist);
 
         artist = new Artist();
-        artist.setId(2L).setName("tom").setCity(SHANG_HAI);
+        artist.setId(2L).setName("tom").setCity(SHANG_HAI).setSalary(200000L);
         artistList.add(artist);
 
         artist = new Artist();
-        artist.setId(3L).setName("wow").setCity(SHANG_HAI);
+        artist.setId(3L).setName("wow").setCity(SHANG_HAI).setSalary(500000L);
         artistList.add(artist);
 
         return artistList;
     }
+
 }
