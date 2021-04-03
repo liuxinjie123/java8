@@ -17,29 +17,28 @@ import java.util.stream.Stream;
 import static java.util.Arrays.asList;
 
 public class ArtistTest {
-
     private static final String SHANG_HAI = "Shanghai";
 
     public static void main(String[] args) {
-       List<Artist> artistList = getArticleList();
-       artistList.forEach(artist -> System.out.println(artist));
+        List<Artist> artistList = getArticleList();
+        artistList.forEach(artist -> System.out.println(artist));
 
-       artistList.stream()
-               .filter(artist -> {
-                   System.out.println(artist.getName());
-                   return SHANG_HAI.equals(artist.getCity());
-               }).count();
+        artistList.stream()
+                .filter(artist -> {
+                    System.out.println(artist.getName());
+                    return SHANG_HAI.equals(artist.getCity());
+                }).count();
 
         System.out.println("-----------------------");
 
-       List<String> collected = Stream.of("a", "b", "c")
-               .map(string -> string.toUpperCase())
-               .collect(Collectors.toList());
+        List<String> collected = Stream.of("a", "b", "c")
+                .map(string -> string.toUpperCase())
+                .collect(Collectors.toList());
         System.out.println(collected);
 
         System.out.println("-----------------------");
 
-        List<Integer> together = Stream.of(asList(1,2), asList(3,6))
+        List<Integer> together = Stream.of(asList(1, 2), asList(3, 6))
                 .flatMap(numbers -> numbers.stream())
                 .collect(Collectors.toList());
         System.out.println(together);
@@ -66,9 +65,15 @@ public class ArtistTest {
         int sum3 = accumulator.apply(
                 accumulator.apply(
                         accumulator.apply(0, 1),
-                2),
-        3);
+                        2),
+                3);
         System.out.println("sum3=" + sum3);
+
+        System.out.println("-----------------------");
+
+        artistList.stream().forEach(artist -> {
+//            System.out.println(Artist::getName);
+        });
     }
 
     private static BinaryOperator<Integer> accumulator = (acc, element) -> acc + element;

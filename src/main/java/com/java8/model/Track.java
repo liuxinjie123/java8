@@ -11,7 +11,7 @@ import java.io.Serializable;
 @NoArgsConstructor
 public class Track implements Serializable {
     /**
-     * nane
+     * name
      */
     private String name;
 
@@ -19,4 +19,9 @@ public class Track implements Serializable {
      * time
      */
     private Long time;
+
+    public Track(String name, Long time) {
+        this.name = name;
+        this.time = time;
+    }
 }
