@@ -11,6 +11,8 @@ import java.net.UnknownHostException;
 @SpringBootApplication
 @Slf4j
 public class ApplicationRun {
+    //private static final org.slf4j.Logger log = org.slf4j.LoggerFactory.getLogger(ApplicationRun.class);
+
     public static void main(String[] args) throws UnknownHostException {
         SpringApplication app = new SpringApplication(ApplicationRun.class);
         Environment env = app.run(args).getEnvironment();

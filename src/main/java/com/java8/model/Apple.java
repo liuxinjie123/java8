@@ -1,29 +1,33 @@
 package com.java8.model;
 
 import com.java8.enu.COLOR;
-import com.java8.test.chapter01.FilterApplesTest;
 import lombok.*;
+import lombok.experimental.Accessors;
 
 import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.function.Predicate;
 
+@Accessors(chain = true)
 @Data
 @NoArgsConstructor
-@RequiredArgsConstructor
-@AllArgsConstructor
 public class Apple implements Serializable {
     private static final Double MIN_HEAVY_WEIGHT = 150.0;
 
     private String name;
     private String color;
-    @NonNull
     private Integer weight;
+
+    public Apple(Integer weight) {
+        this.weight = weight;
+    }
 
     public Apple(String name, String color) {
         this.name = name;
         this.color = color;
+    }
+
+    public Apple(String name, String color, Integer weight) {
+        this(name, color);
+        this.weight = weight;
     }
 
     public static boolean isGreenApple(Apple apple) {

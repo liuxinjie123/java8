@@ -33,9 +33,12 @@ public class HelloController {
         appleList.add(b);
         Apple c = new Apple("C", COLOR.YELLOW, 100);
         appleList.add(c);
+
         List<Apple> greenAppleList = greenColorService.filterApples(appleList, new AppleGreenColorPredicate());
         greenAppleList.parallelStream().forEach(System.out::println);
+
         System.out.println(" -------------------------------------------- ");
+
         List<Apple> redAppleList = redColorService.filterApples(appleList, new AppleRedColorPredicate());
         redAppleList.parallelStream().forEach(System.out::println);
         return redAppleList;
