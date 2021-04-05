@@ -1,20 +1,14 @@
 package com.java8.lambda;
 
+import com.java8.model.Album;
 import com.java8.model.Artist;
-import com.java8.service.ArtistService;
-import org.springframework.beans.factory.annotation.Autowired;
-
-import javax.annotation.Resource;
-import java.math.BigDecimal;
-import java.util.ArrayList;
-import java.util.IntSummaryStatistics;
-import java.util.List;
-import java.util.LongSummaryStatistics;
+import java.util.*;
 import java.util.function.BinaryOperator;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 import static java.util.Arrays.asList;
+import static java.util.stream.Collectors.partitioningBy;
 
 public class ArtistTest {
     private static final String SHANG_HAI = "Shanghai";
@@ -72,8 +66,15 @@ public class ArtistTest {
         System.out.println("-----------------------");
 
         artistList.stream().forEach(artist -> {
-//            System.out.println(Artist::getName);
+            System.out.println(artist.getName());
         });
+
+        System.out.println("-----------------------");
+
+        String nameStr = artistList.stream()
+                .map(Artist::getName)
+                .collect(Collectors.joining(", ", "[", "]"));
+        System.out.println(nameStr);
     }
 
     private static BinaryOperator<Integer> accumulator = (acc, element) -> acc + element;

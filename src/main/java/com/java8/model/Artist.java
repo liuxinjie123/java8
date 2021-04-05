@@ -5,7 +5,11 @@ import lombok.NoArgsConstructor;
 import lombok.experimental.Accessors;
 
 import java.io.Serializable;
-import java.math.BigDecimal;
+import java.util.List;
+import java.util.Map;
+import java.util.stream.Stream;
+
+import static java.util.stream.Collectors.groupingBy;
 
 @Accessors(chain = true)
 @Data
@@ -30,6 +34,12 @@ public class Artist implements Serializable {
      * salary
      */
     private Long salary;
+
+    private List<Album> albumList;
+
+//    public Map<Artist, List<Album>> albumByArtist(Stream<Album> albums) {
+//        return albums.collect(groupingBy(album -> album.getTrackList()));
+//    }
 
 }
 
